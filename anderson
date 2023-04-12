@@ -1,0 +1,10 @@
+#!/bin/bash
+
+username=$1
+password=$2
+
+find . -print0 | while IFS= read -r -d '' file
+do 
+    echo "$file"
+    neo -u $1 -p $2 -f $file
+done
