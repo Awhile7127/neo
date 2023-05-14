@@ -6,5 +6,5 @@ password=$2
 find . -type f -name "*.html" -print0 | while IFS= read -r -d '' file
 do 
     echo "$file"
-    #neo -u $1 -p $2 -f $file
+    neo -u $1 -p $2 -f $file
 done
