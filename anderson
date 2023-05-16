@@ -1,11 +1,10 @@
 #!/bin/bash
 
-username=$1
-password=$2
+key=$1
 
 find . -type f -name "*.html" -print0 | while IFS= read -r -d '' file
 do 
     echo "$file";
-    neo -u $1 -p $2 -f $file;
+    neo -k $key -f $file;
     sleep 5;
 done

@@ -14,19 +14,16 @@ use std::fs;
 #[derive(Parser, Debug)]
 struct Args {
 
-    #[clap(long="username", short='u', default_value="", required=true)]
-    username: String,
-
-    #[clap(long="password", short='p', default_value="", required=true)]
-    password: String,
+    #[clap(long="key", short='k', default_value="", required=true)]
+    key: String,
 
     #[clap(long="filename", short='f', default_value="", required=true)]
     filename: String,
 }
 
 // Fetch authenticated Neocities client
-fn get_neo_client(username: String, password: String) -> Neocities {
-    let client = Neocities::login(username, password);
+fn get_neo_client(key: String) -> Neocities {
+    let client = Neocities::new(key);
     return client;
 }
 
@@ -58,7 +55,7 @@ async fn upload_file(client: Neocities, filename: String, content: String) -> St
 #[tokio::main]
 async fn main() {
     let args = Args::parse();
-    let client = get_neo_client(args.username, args.password);
+    let client = get_neo_client(args.key);
     let content = read_file(args.filename.clone());
     let result = upload_file(client, args.filename.clone(), content).await;
     println!("{:?}", result);

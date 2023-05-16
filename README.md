@@ -41,12 +41,25 @@ cargo build -r
 
 ```
 neo --help        See help and available options
-neo <username> <password> <file> 
+neo <api-key> <file> 
 ```
 
-- username **REQUIRED**: Your neocities login username (email)
-- password **REQUIRED**: Your neocities login password
+- api-key **REQUIRED**: Your neocities API key, see generation below
 - file **REQUIRED**: The file to upload to your site
+
+
+## Generating a Neocities API key
+
+Easily done by `cURL`ing a Neocities web endpoint with your
+username and password:
+
+```
+curl "https://USER:PASS@neocities.org/api/key"
+```
+
+You only need to generate your key once.
+
+See more [here](https://neocities.org/api).
 
 
 ## Anderson
